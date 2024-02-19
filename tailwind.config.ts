@@ -9,8 +9,11 @@ export default {
         bggrad1: '#020024',
         bggrad2: '#023718',
         bggrad3: '#045336',
-        topnavBg: '#045336',
+        topnavBg: '#06a26a',
 
+      },
+      gridTemplateColumns: {
+        mainlayout: '0px 1fr 0px', // until we get real content
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

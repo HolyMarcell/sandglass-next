@@ -30,8 +30,12 @@ export default function RootLayout({children}: { children: React.ReactNode; }) {
     <HTML>
       <div className={'bg-gradient-to-b from-bggrad1 via-bggrad2 to-bggrad3 relative'}>
         <Topnav/>
-        <div className={'grid grid-cols-1 gap-3 min-h-screen'}>
-          {children}
+        <div className={'grid grid-cols-mainlayout gap-0 min-h-screen w-4/5 max-w-screen-xl mx-auto'}>
+          <div>{/* leftnav */}</div>
+          <div className={"min-h-screen rounded-lg bg-gray-200 mt-5 p-5"}>
+            {children}
+          </div>
+          <div>{/* leftnav */}</div>
         </div>
       </div>
     </HTML>
