@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '~/server/auth';
 import { isNil } from 'ramda';
 import { SignOutButton } from '~/app/components/SignOutButton';
+import Image from 'next/image';
 
 
 export async function Topnav() {
@@ -17,7 +18,7 @@ export async function Topnav() {
       <div className={'flex-row items-center flex'}>
         <div>
           <Link href={'/'}>
-            <img src="/sandglass_logo.png" alt="Sandglass - Logo" className={'w-[200px]'}/>
+            <Image src="/sandglass_logo.png" alt="Sandglass - Logo" width={200} height={62} className={'w-[200px]'}/>
           </Link>
         </div>
         {!loggedIn &&

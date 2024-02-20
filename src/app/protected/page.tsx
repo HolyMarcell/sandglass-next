@@ -1,10 +1,9 @@
-import { getServerSession } from 'next-auth';
-import { authOptions } from '~/server/auth';
+import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
 
 export default async function ProtectedPage() {
 
   // Server
-  const session = await getServerSession(authOptions);
+  void serverAuthOr404();
 
 
   return (
