@@ -26,22 +26,27 @@ export async function Topnav() {
           </div>
         }
         {loggedIn &&
-          <div>
-            <Link href={'/dashboard'}>Dashboard</Link>
-          </div>
+          <>
+            <div className={'mr-3'}>
+              <Link href={'/dashboard'}>Dashboard</Link>
+            </div>
+            <div className={'mr-3'}>
+              <Link href={'/sites'}>Sites</Link>
+            </div>
+          </>
         }
 
       </div>
 
       <div className={'flex-row items-center flex mr-6'}>
-      {!loggedIn &&
-        <div>
-          <Link href={'/login'}>Login</Link>
-        </div>
-      }
-      {loggedIn &&
-        <SignOutButton/>
-      }
+        {!loggedIn &&
+          <div>
+            <Link href={'/login'}>Login</Link>
+          </div>
+        }
+        {loggedIn &&
+          <SignOutButton/>
+        }
       </div>
     </div>
   )

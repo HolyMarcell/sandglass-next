@@ -2,9 +2,9 @@ import '~/styles/globals.css';
 
 import { Inter } from 'next/font/google';
 import { FC, PropsWithChildren } from 'react';
-import { Topnav } from '~/app/topnav';
-import { SessionProvider } from 'next-auth/react';
 import AuthProvider from '~/app/components/AuthProvider';
+import { Topnav } from '~/app/components/Topnav';
+import { Footer } from '~/app/components/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -48,6 +48,7 @@ export default function RootLayout({children}: { children: React.ReactNode; }) {
             </div>
             <div>{/* leftnav */}</div>
           </div>
+          <Footer />
         </div>
       </Providers>
     </HTML>

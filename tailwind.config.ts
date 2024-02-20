@@ -26,6 +26,7 @@ const config = {
         bggrad2: '#023718',
         bggrad3: '#045336',
         topnavBg: '#06a26a',
+        footerBg: '#051f0b',
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -1,6 +1,20 @@
+// middleware.ts
+import { NextRequest, NextResponse } from 'next/server';
 
-export const config = {
-  matcher: ['/protected'], // force login for these pages
+export default async function middleware(req: NextRequest) {
+  const path = req.nextUrl.pathname;
+  const session = !!req.cookies.get("next-auth.session-token")
+
+  if (!session) {
+    return NextResponse.redirect(new URL(`/api/auth/signin?callbackUrl=${path}`, req.url));
+  }
+  return NextResponse.next();
 }
 
-export {default} from "next-auth/middleware";
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/dashboard',
+    '/protected/:path*'
+  ]
+}
