@@ -62,10 +62,16 @@ model VerificationToken {
 model Site {
   id         String @id @default(cuid())
   name       String
-  pingStatus String
+  pingStatus SitePingStatus
   pings      Ping[]
   User       User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
+}
+
+enum SitePingStatus {
+  Unknown
+  Online
+  Offline
 }
 
 model Ping {
@@ -81,8 +87,15 @@ model Ping {
 
 model PingResult {
   id     String @id @default(cuid())
-  status String
+  status PingResultStatus
 
   pingId String
   Ping   Ping   @relation(fields: [pingId], references: [id], onDelete: Cascade)
+}
+
+
+enum PingResultStatus {
+  Unknown
+  Online
+  Offline
 }

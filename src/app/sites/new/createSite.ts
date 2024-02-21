@@ -25,7 +25,7 @@ export default async function createSite(values: NewSiteFormProps) {
   const site = await prisma.site.create({
     data: {
       name: values.name,
-      pingStatus: 'unknown',
+      pingStatus: 'Unknown',
       userId: userId
     }
   });

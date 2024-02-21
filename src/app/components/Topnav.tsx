@@ -18,7 +18,14 @@ export async function Topnav() {
       <div className={'flex-row items-center flex'}>
         <div>
           <Link href={'/'}>
-            <Image src="/sandglass_logo.png" alt="Sandglass - Logo" width={200} height={62} className={'w-[200px]'}/>
+            <Image
+              priority={true}
+              placeholder={'empty'}
+              src="/sandglass_logo.png" alt="Sandglass - Logo"
+              width={200}
+              height={62}
+              style={{width: '200px', height: '62px'}}
+            />
           </Link>
         </div>
         {!loggedIn &&
