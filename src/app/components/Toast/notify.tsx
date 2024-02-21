@@ -18,7 +18,7 @@ const Message: FC<MessageProps> = ({title, description}) => {
 
 
 export interface Notification {
-  title: string; 
+  title: string;
   description?: string;
 
 }
