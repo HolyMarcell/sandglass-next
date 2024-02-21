@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { toast } from 'react-toastify';
+import { ToastProps } from 'react-toastify/dist/types';
 
 
 interface MessageProps {
   title: string;
   description?: string;
-  closeToast?: any;
-  toastProps: any;
+  closeToast?: () => void;
+  toastProps: ToastProps;
 }
 
 const Message: FC<MessageProps> = ({title, description}) => {
