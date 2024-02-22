@@ -1,5 +1,5 @@
 import { SitesTable } from '~/app/sites/SitesTable';
-import PageHeader from '~/app/components/PageHeader';
+import PageHeader from '~/app/components/Layout/PageHeader';
 import { getSites } from '~/app/sites/controller/getSites';
 
 
@@ -8,7 +8,10 @@ export default async function SitesPage() {
 
   return (
     <div>
-      <PageHeader>Sites</PageHeader>
+      <PageHeader
+        segments={[
+          {label: 'Sites', link: '/sites'},
+        ]}/>
       <SitesTable sites={sites} />
     </div>
   )

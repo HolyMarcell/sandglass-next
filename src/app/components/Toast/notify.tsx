@@ -34,7 +34,6 @@ export const notifyError = ({title, description}: Notification) => {
 }
 
 export const notifySuccess = ({title, description}: Notification) => {
-  console.log('toast success')
   toast.success(
     () =>
       <Message title={title} description={description}/>,

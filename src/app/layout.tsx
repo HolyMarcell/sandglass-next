@@ -4,8 +4,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { Inter } from 'next/font/google';
 import { FC, PropsWithChildren } from 'react';
 import AuthProvider from '~/app/components/AuthProvider';
-import { Topnav } from '~/app/components/Topnav';
-import { Footer } from '~/app/components/Footer';
+import { Topnav } from '~/app/components/Layout/Topnav';
+import { Footer } from '~/app/components/Layout/Footer';
 import { NotificationProvider } from '~/app/components/Toast/NotificationProvider';
 
 const inter = Inter({
