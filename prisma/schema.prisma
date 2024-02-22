@@ -60,12 +60,14 @@ model VerificationToken {
 // Pings and sites
 
 model Site {
-  id         String @id @default(cuid())
+  id         String         @id @default(cuid())
   name       String
   pingStatus SitePingStatus
   pings      Ping[]
-  User       User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  User       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
 }
 
 enum SitePingStatus {
@@ -83,16 +85,19 @@ model Ping {
   timer        String
   site         Site         @relation(fields: [siteId], references: [id], onDelete: Cascade)
   pingResults  PingResult[]
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
 }
 
 model PingResult {
-  id     String @id @default(cuid())
+  id     String           @id @default(cuid())
   status PingResultStatus
 
   pingId String
   Ping   Ping   @relation(fields: [pingId], references: [id], onDelete: Cascade)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
 }
-
 
 enum PingResultStatus {
   Unknown
