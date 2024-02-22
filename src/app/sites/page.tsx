@@ -1,6 +1,6 @@
 import { SitesTable } from '~/app/sites/SitesTable';
 import PageHeader from '~/app/components/PageHeader';
-import { getSites } from '~/app/sites/getSites';
+import { getSites } from '~/app/sites/controller/getSites';
 
 
 export default async function SitesPage() {

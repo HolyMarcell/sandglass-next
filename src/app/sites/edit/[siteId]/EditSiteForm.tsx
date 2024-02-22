@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { notifyError, notifySuccess } from '~/app/components/Toast/notify';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { Site } from '@prisma/client';
-import editSite from '~/app/sites/edit/[siteId]/editSite';
+import updateSite from '~/app/sites/controller/updateSite';
 
 
 export const editSiteFormSchema = z.object({
@@ -31,7 +31,7 @@ export function EditSiteForm({site}: {site: Site}) {
 
 
   const onSubmit = (values: EditSiteFormProps) => {
-    editSite(values)
+    updateSite(values)
       .then(() => {
         notifySuccess({
           title: 'Site updated'

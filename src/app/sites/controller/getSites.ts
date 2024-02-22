@@ -12,7 +12,7 @@ export async function getSites(): Promise<Site[]> {
       userId: session.user.id
     },
     orderBy: {
-      createdAt: 'asc'
+      createdAt: 'desc'
     }
   });
 

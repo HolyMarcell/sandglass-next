@@ -4,11 +4,11 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '~/components/ui/input';
-import createSite from '~/app/sites/new/createSite';
 import { SubmitButton } from '~/components/ui/submitButton';
 import { useRouter } from 'next/navigation';
 import { notifyError, notifySuccess } from '~/app/components/Toast/notify';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
+import createSite from '~/app/sites/controller/createSite';
 
 
 export const newSiteFormSchema = z.object({

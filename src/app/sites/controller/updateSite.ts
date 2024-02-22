@@ -13,7 +13,7 @@ const editSiteFormSchema = z.object({
 
 const prisma = new PrismaClient();
 
-export default async function editSite(values: EditSiteFormProps) {
+export default async function updateSite(values: EditSiteFormProps) {
   const session = await serverAuthOr404();
   const userId = session.user.id;
 

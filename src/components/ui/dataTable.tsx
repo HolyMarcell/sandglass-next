@@ -5,18 +5,27 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  data: TData[],
+  onRowClick?: (row: TData) => void;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  onRowClick
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
+
+  const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, row: TData) => {
+    if (onRowClick) {
+      e.preventDefault();
+      onRowClick(row)
+    }
+  }
 
   return (
     <div className="rounded-md border">
@@ -44,7 +53,9 @@ export function DataTable<TData, TValue>({
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
-                data-state={row.getIsSelected() && "selected"}
+                className={onRowClick ? 'cursor-pointer' : ''}
+                onClick={onRowClick ? (e) => handleRowClick(e, row.original) : undefined}
+                data-state={row.getIsSelected() && 'selected'}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

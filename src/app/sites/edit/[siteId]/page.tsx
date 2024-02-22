@@ -1,8 +1,8 @@
 import PageHeader from '~/app/components/PageHeader';
 import { EditSiteForm } from '~/app/sites/edit/[siteId]/EditSiteForm';
-import { getSiteById } from '~/app/sites/getSiteById';
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
+import { getSiteById } from '~/app/sites/controller/getSiteById';
 
 export default async function EditPage({params}: {params: {siteId: string}}) {
 
