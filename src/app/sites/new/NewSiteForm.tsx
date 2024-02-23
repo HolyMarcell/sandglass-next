@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { notifyError, notifySuccess } from '~/app/components/Toast/notify';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import createSite from '~/app/sites/controller/createSite';
+import { ButtonRow } from '~/components/ui/button';
 
 
 export const newSiteFormSchema = z.object({
@@ -71,7 +72,10 @@ export function NewSiteForm() {
                 )
               }}
             />
-            <SubmitButton className={'mt-6'}>Create</SubmitButton>
+
+            <ButtonRow>
+              <SubmitButton className={'mt-6'}>Create</SubmitButton>
+            </ButtonRow>
           </form>
         </Form>
       </CardContent>
