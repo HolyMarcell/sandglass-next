@@ -24,6 +24,13 @@ export const metadata = {
 const HTML: FC<PropsWithChildren> = ({children}) => {
   return (
     <html lang="en">
+    <head>
+
+      <title>Sandglass.it - Reliable Website Uptime Tracker</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="description" content="The reliable website uptime tracker. Keep track of
+      when your website, SaaS or Service is online and get alerted when not!"/>
+    </head>
     <body className={`font-sans ${inter.variable}`}>{children}</body>
     </html>
   );
