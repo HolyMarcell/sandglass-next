@@ -6,26 +6,32 @@ import Link from 'next/link';
 import DeleteConfirm from '~/app/components/Confirm/DeleteConfirm';
 import { useRouter } from 'next/navigation';
 import { useCurrentSiteId } from '~/app/sites/util/useCurrentSiteId';
+import { deletePing } from '~/app/sites/[siteId]/pings/controller/deletePing';
+import { notifyError, notifySuccess } from '~/app/components/Toast/notify';
+import { LabelList } from '~/components/ui/labelList';
 
 export async function PingCard({ping}: { ping: Ping }) {
   const r = useRouter();
   const siteId = useCurrentSiteId();
 
-  // const handleDelete = () => {
-  //   deleteSite(site.id)
-  //     .then(() => {
-  //       notifySuccess({title: `Site ${site.name} deleted successfully`})
-  //       r.push('/sites');
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //       notifyError({title: 'Could not delete site.'})
-  //     })
-  // }
-
   const handleDelete = () => {
-    console.log('del del del')
+    deletePing(ping.id)
+      .then(() => {
+        notifySuccess({title: `Ping ${ping.url} was deleted successfully`})
+        r.push(`/sites/${siteId}/pings`);
+      })
+      .catch((e) => {
+        console.log(e);
+        notifyError({title: 'Could not delete ping.'})
+      })
   }
+
+  const data = [
+    {label: 'Url', data: <Link href={ping.url} target={'_blank'}>{ping.url}</Link> },
+    {label: 'Method', data: ping.method},
+    {label: 'Expect Status', data: ping.expectStatus},
+    {label: 'Timer', data: ping.timer},
+  ]
 
   return (
     <Card>
@@ -35,7 +41,7 @@ export async function PingCard({ping}: { ping: Ping }) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-
+        <LabelList list={data} />
       </CardContent>
       <CardFooter className={'justify-end'}>
         <Button variant={'link'} asChild>

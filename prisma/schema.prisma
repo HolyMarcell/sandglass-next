@@ -81,7 +81,7 @@ enum SitePingStatus {
 model Ping {
   id           String       @id @default(cuid())
   siteId       String
-  method       String
+  method       PingMethod
   url          String
   expectStatus Int
   timer        String
@@ -91,6 +91,11 @@ model Ping {
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
   userId       String
+}
+
+enum PingMethod {
+  GET
+  OPTIONS
 }
 
 model PingResult {

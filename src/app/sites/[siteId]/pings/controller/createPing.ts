@@ -1,10 +1,10 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
 import { revalidatePath } from 'next/cache';
 import { NewPingFormProps } from '~/app/sites/[siteId]/pings/new/NewPingForm';
+import { prisma } from '~/app/prisma';
 
 const newPingFormSchema = z.object({
   siteId: z.string().min(10, 'This needs a parent site!'),
@@ -15,7 +15,6 @@ const newPingFormSchema = z.object({
 });
 
 
-const prisma = new PrismaClient();
 
 export default async function createPing(values: NewPingFormProps) {
   const session = await serverAuthOr404();

@@ -1,17 +1,16 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
 import { revalidatePath } from 'next/cache';
 import { EditSiteFormProps } from '~/app/sites/edit/[siteId]/EditSiteForm';
+import { prisma } from '~/app/prisma';
 
 const editSiteFormSchema = z.object({
   name: z.string().min(1, 'The name cannot be empty'),
   id: z.string().min(4),
 });
 
-const prisma = new PrismaClient();
 
 export default async function updateSite(values: EditSiteFormProps) {
   const session = await serverAuthOr404();

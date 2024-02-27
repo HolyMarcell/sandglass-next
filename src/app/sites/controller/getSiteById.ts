@@ -1,7 +1,7 @@
-import { PrismaClient, Site } from '@prisma/client';
+import { Site } from '@prisma/client';
 import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
+import { prisma } from '~/app/prisma';
 
-const prisma = new PrismaClient();
 
 export async function getSiteById(id: Site['id']): Promise<Site | null> {
   const session = await serverAuthOr404();

@@ -1,8 +1,8 @@
 'use server'
-import { PrismaClient, Site } from '@prisma/client';
+import { Site } from '@prisma/client';
 import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
+import { prisma } from '~/app/prisma';
 
-const prisma = new PrismaClient();
 
 export async function getSites(): Promise<Site[]> {
   const session = await serverAuthOr404();

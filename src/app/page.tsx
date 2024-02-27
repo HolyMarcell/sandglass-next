@@ -3,12 +3,7 @@ import Image from 'next/image';
 import { H1, H2, Li, Ol, P, Strong } from '~/components/ui/typography';
 import { Button } from '~/components/ui/button';
 import Link from 'next/link';
-import { serverAuthOrRediect } from '~/app/util/serverAuthOrRedirect';
 import { serverNotAuthOrRediect } from '~/app/util/serverNotAuthOrRedirect';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '~/server/auth';
-import { isNil } from 'ramda';
-import { redirect } from 'next/navigation';
 
 const Block = ({children}: FWC) => {
   return (
