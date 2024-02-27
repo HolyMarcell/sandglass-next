@@ -4,6 +4,7 @@ import PageHeader from '~/app/components/Layout/PageHeader';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { getBySiteId } from '~/app/sites/[siteId]/pings/controller/getBySiteId';
 import { PingsTable } from '~/app/sites/[siteId]/pings/PingsTable';
+import Page from '~/app/components/Layout/Page';
 
 
 export default async function PingsPage({params}: { params: { siteId: string } }) {
@@ -18,7 +19,7 @@ export default async function PingsPage({params}: { params: { siteId: string } }
   }
 
   return (
-    <div>
+    <Page>
       <PageHeader
         segments={[
           {label: 'Sites', link: '/sites'},
@@ -26,6 +27,6 @@ export default async function PingsPage({params}: { params: { siteId: string } }
           {label: 'Pings', }, // link: `/sites/${params.siteId}/pings`
         ]}/>
       <PingsTable pings={pings} />
-    </div>
+    </Page>
   )
 }

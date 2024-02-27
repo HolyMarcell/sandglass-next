@@ -1,4 +1,5 @@
 import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
+import Page from '~/app/components/Layout/Page';
 
 export default async function DashboardPage() {
 
@@ -6,8 +7,8 @@ export default async function DashboardPage() {
 
 
   return (
-    <div>
+    <Page>
       Hello Dashboard
-    </div>
+    </Page>
   )
 }

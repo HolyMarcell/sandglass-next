@@ -4,6 +4,7 @@ import { SiteCard } from '~/app/sites/[siteId]/SiteCard';
 import PageHeader from '~/app/components/Layout/PageHeader';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { getBySiteId } from '~/app/sites/[siteId]/pings/controller/getBySiteId';
+import Page from '~/app/components/Layout/Page';
 
 
 export default async function SitePage({params}: { params: { siteId: string } }) {
@@ -18,13 +19,13 @@ export default async function SitePage({params}: { params: { siteId: string } })
   }
 
   return (
-    <div>
+    <Page>
       <PageHeader
         segments={[
           {label: 'Sites', link: '/sites'},
           {label: site.name, link: `/sites/${site.id}`}
         ]}/>
       <SiteCard site={site} pings={pings}/>
-    </div>
+    </Page>
   )
 }

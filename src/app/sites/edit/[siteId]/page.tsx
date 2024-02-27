@@ -3,6 +3,7 @@ import { EditSiteForm } from '~/app/sites/edit/[siteId]/EditSiteForm';
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
+import Page from '~/app/components/Layout/Page';
 
 export default async function EditPage({params}: {params: {siteId: string}}) {
 
@@ -12,7 +13,7 @@ export default async function EditPage({params}: {params: {siteId: string}}) {
   }
 
   return (
-    <div>
+    <Page>
       <PageHeader
         segments={[
           {label: 'Sites', link: '/sites'},
@@ -20,6 +21,6 @@ export default async function EditPage({params}: {params: {siteId: string}}) {
           {label: 'Edit'}
         ]}/>
       <EditSiteForm site={site} />
-    </div>
+    </Page>
   )
 }

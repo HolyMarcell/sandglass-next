@@ -4,6 +4,7 @@ import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { NewPingForm } from '~/app/sites/[siteId]/pings/new/NewPingForm';
+import Page from '~/app/components/Layout/Page';
 
 export default async function NewPingPage({params}: {params: {siteId: Site['id']}}) {
 
@@ -13,7 +14,7 @@ export default async function NewPingPage({params}: {params: {siteId: Site['id']
   }
 
   return (
-    <div>
+    <Page>
       <PageHeader
         segments={[
           {label: 'Sites', link: '/sites'},
@@ -22,6 +23,6 @@ export default async function NewPingPage({params}: {params: {siteId: Site['id']
           {label: 'New'}
         ]}/>
       <NewPingForm />
-    </div>
+    </Page>
   )
 }

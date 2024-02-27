@@ -5,6 +5,7 @@ import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { getPingById } from '~/app/sites/[siteId]/pings/controller/getPingById';
 import { PingCard } from '~/app/sites/[siteId]/pings/[pingId]/PingCard';
 import { getDomain } from '~/app/sites/util/getDomain';
+import Page from '~/app/components/Layout/Page';
 
 
 export default async function PingPage({params}: { params: { siteId: string, pingId: string } }) {
@@ -19,7 +20,7 @@ export default async function PingPage({params}: { params: { siteId: string, pin
   }
 
   return (
-    <div>
+    <Page>
       <PageHeader
         segments={[
           {label: 'Sites', link: '/sites'},
@@ -28,6 +29,6 @@ export default async function PingPage({params}: { params: { siteId: string, pin
           {label: getDomain(ping.url)},
         ]}/>
       <PingCard ping={ping} />
-    </div>
+    </Page>
   )
 }

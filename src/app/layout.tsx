@@ -7,6 +7,7 @@ import AuthProvider from '~/app/components/AuthProvider';
 import { Topnav } from '~/app/components/Layout/Topnav';
 import { Footer } from '~/app/components/Layout/Footer';
 import { NotificationProvider } from '~/app/components/Toast/NotificationProvider';
+import PageLayout from '~/app/components/Layout/PageLayout';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,13 +47,10 @@ export default function RootLayout({children}: { children: React.ReactNode; }) {
       <Providers>
         <div className={'bg-gradient-to-b from-bggrad1 via-bggrad2 to-bggrad3 relative min-h-screen'}>
           <Topnav/>
-          <div className={'grid grid-cols-mainlayout gap-0 w-4/5 max-w-screen-xl mx-auto min-h-[calc(100vh-178px)]'}>
-            <div>{/* leftnav */}</div>
-            <div className={'min-h-48 rounded-lg bg-gray-200 mt-5 p-5'}>
-              {children}
-            </div>
-            <div>{/* leftnav */}</div>
-          </div>
+          <PageLayout>
+
+            {children}
+          </PageLayout>
           <Footer/>
         </div>
       </Providers>
