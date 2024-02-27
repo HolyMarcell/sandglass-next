@@ -92,7 +92,7 @@ export default function HomePage() {
               <Image
                 priority={true}
                 placeholder={'empty'}
-                src="/uptime_illustration_green_pc.png" alt="Sandglass.it Logo"
+                src="/uptime_illustration_green_pc.png" alt="Sandglass.it Uptime Dashboard alerting"
                 width={400}
                 height={400}
                 style={{width: '400px', height: 'auto'}}
@@ -108,7 +108,7 @@ export default function HomePage() {
               <Image
                 priority={true}
                 placeholder={'empty'}
-                src="/uptime_illustration_green.png" alt="Sandglass.it Logo"
+                src="/uptime_illustration_green.png" alt="Sandglass.it Tracks your SaaS or Service"
                 width={400}
                 height={400}
                 style={{width: '400px', height: 'auto'}}
