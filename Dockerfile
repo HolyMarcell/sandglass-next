@@ -7,9 +7,9 @@ COPY package.json yarn.lock ./
 FROM base as build
 RUN export NODE_ENV=production
 RUN yarn
-RUN yarn run db:generate
 
 COPY . .
+RUN yarn run db:generate
 RUN npx next telemetry disable
 RUN yarn build
 
