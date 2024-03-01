@@ -26,8 +26,8 @@ services:
     expose:
       - 3000:3000
     networks:
-      - ingress
       - sandglass
+      - ingress
     depends_on:
       - sandglass_postgres
 
