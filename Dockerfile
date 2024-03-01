@@ -10,7 +10,6 @@ RUN yarn
 
 COPY . .
 RUN yarn run db:generate
-RUN npx next telemetry disable
 RUN yarn build
 
 FROM base as prod
