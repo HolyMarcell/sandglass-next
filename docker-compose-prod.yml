@@ -35,5 +35,6 @@ volumes:
 
 networks:
   sandglass:
+    external: true
   ingress:
     external: true
