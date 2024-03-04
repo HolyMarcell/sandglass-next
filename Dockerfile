@@ -21,4 +21,4 @@ COPY --from=build  /app/prisma /app/prisma
 
 RUN yarn run db:generate
 EXPOSE 80
-CMD ["yarn", "start"]
+CMD ["yarn", "prod"]
