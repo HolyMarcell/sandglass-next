@@ -8,7 +8,7 @@ services:
     image: postgres:16.2-alpine
     restart: always
     env_file:
-      - .env.prod
+      - .env.postgres.prod
     volumes:
       - sandglass_postgres:/var/lib/postgresql
     expose:
@@ -22,7 +22,7 @@ services:
     image: local/sandglass
     restart: always
     env_file:
-      - .env.prod
+      - .env.app.prod
     expose:
       - 3000:3000
     networks:
@@ -36,7 +36,7 @@ services:
     build: ./cron
     restart: always
     env_file:
-      - .env.prod
+      - .env.cron.prod
 
 
 volumes:
