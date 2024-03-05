@@ -31,6 +31,13 @@ services:
     depends_on:
       - sandglass_postgres
 
+  sandglass_cron:
+    container_name: sandglass_cron
+    build: ./cron
+    restart: always
+    env_file:
+      - .env.prod
+
 
 volumes:
   sandglass_postgres:
