@@ -19,7 +19,7 @@ services:
 
   sandglass_app:
     container_name: sandglass_app
-    build: .
+    image: local/sandglass
     restart: always
     env_file:
       - .env.app.prod
