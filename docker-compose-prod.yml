@@ -38,7 +38,7 @@ services:
     env_file:
       - .env.prod
     networks:
-      - sandglass
+      - ingress
 
 
 volumes:
