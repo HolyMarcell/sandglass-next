@@ -4,7 +4,6 @@ import { authOptions } from '~/server/auth';
 import { isNil } from 'ramda';
 import { SignOutButton } from '~/app/components/SignOutButton';
 import Image from 'next/image';
-import PingBtn from '~/app/components/Layout/PingBtn';
 
 
 export async function Topnav() {
@@ -45,7 +44,6 @@ export async function Topnav() {
             <div className={'mr-3'}>
               <Link href={'/sites'}>Sites</Link>
             </div>
-            <PingBtn />
           </>
         }
 

@@ -4,7 +4,8 @@ import { differenceInMilliseconds } from 'date-fns';
 
 export const runPings = async () => {
   const pings = await prisma.ping.findMany();
-  pings.map(runPing);
+  const waitfor = pings.map(runPing);
+  return Promise.all(waitfor);
 }
 
 
@@ -19,7 +20,7 @@ const runPing = async (ping: Ping) => {
       createdAt: 'desc'
     }
   });
-  const diff = differenceInMilliseconds(new Date(), new Date(lastPing?.createdAt || new Date()));
+  const diff = differenceInMilliseconds(new Date(), new Date(lastPing?.createdAt ?? new Date()));
 
   // Spam prevention: If less than 9 seconds elapsed since last call, we dont call now
   if(diff < 9000) {
