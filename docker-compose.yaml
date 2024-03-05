@@ -14,6 +14,11 @@ services:
     ports:
       - 5556:5432
 
+  cron:
+    build: ./cron
+    env_file:
+      - .env
+
   schlepptop_adminer:
     image: adminer
     restart: always

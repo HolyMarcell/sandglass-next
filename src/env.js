@@ -30,6 +30,7 @@ export const env = createEnv({
     ),
     EMAIL_SERVER: z.string(),
     EMAIL_FROM: z.string(),
+    PING_CALL_SECRET: z.string(),
   },
 
   /**
@@ -52,6 +53,7 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     EMAIL_SERVER: process.env.EMAIL_SERVER,
     EMAIL_FROM: process.env.EMAIL_FROM,
+    PING_CALL_SECRET: process.env.PING_CALL_SECRET
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
