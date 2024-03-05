@@ -1,8 +1,7 @@
-import { NextApiRequest } from 'next';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { runPings } from '~/app/api/ping/runPings';
 
-export const POST = (req: Request, res: Response) => {
+export const POST = (req: NextRequest, res: NextResponse) => {
   const authString = req.headers.get('authorization');
   if(authString === `Bearer ${process.env.PING_CALL_SECRET}`) {
     runPings();
@@ -10,6 +9,6 @@ export const POST = (req: Request, res: Response) => {
   return NextResponse.json({});
 }
 
-export const GET = (req: NextApiRequest, res: NextApiRequest) => {
+export const GET = (req: NextRequest, res: NextResponse) => {
   return NextResponse.json({});
 }
