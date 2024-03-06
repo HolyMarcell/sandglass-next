@@ -1,10 +1,11 @@
 'use server'
-import { Site } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { serverAuthOr404 } from '~/app/util/serverAuthOr404';
 import { prisma } from '~/app/prisma';
 
+export type SiteWithPing = Prisma.SiteGetPayload<{ include: { pings: true } }>
 
-export async function getSites(): Promise<Site[]> {
+export async function getSites(): Promise<SiteWithPing[]> {
   const session = await serverAuthOr404();
 
   const sites = prisma.site.findMany({
@@ -13,6 +14,9 @@ export async function getSites(): Promise<Site[]> {
     },
     orderBy: {
       createdAt: 'desc'
+    },
+    include: {
+      pings: true
     }
   });
 

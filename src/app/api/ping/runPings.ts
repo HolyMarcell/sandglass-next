@@ -1,6 +1,7 @@
 import { prisma } from '~/app/prisma';
-import { Ping } from '@prisma/client';
+import { Ping, PingResultStatus } from '@prisma/client';
 import { differenceInMilliseconds } from 'date-fns';
+import { isNil } from 'ramda';
 
 export const runPings = async () => {
   const pings = await prisma.ping.findMany();
@@ -20,17 +21,34 @@ const runPing = async (ping: Ping) => {
       createdAt: 'desc'
     }
   });
-  const diff = differenceInMilliseconds(new Date(), new Date(lastPing?.createdAt ?? new Date()));
+  const diff = !isNil(lastPing?.createdAt) ? differenceInMilliseconds(new Date(), new Date(lastPing.createdAt)) : 2000000;
 
   // Spam prevention: If less than 9 seconds elapsed since last call, we dont call now
-  if(diff < 9000) {
+  if (diff < 9000) {
     return;
   }
 
-  const request = await  fetch(ping.url, {
-    method: ping.method
-  });
-  const pingStatus = request.status === ping.expectStatus ? 'Online' : 'Offline';
+  // Do the ping
+  let pingStatus: PingResultStatus;
+  try {
+
+    const request = await fetch(ping.url, {
+      method: ping.method
+    });
+    pingStatus = request.status === ping.expectStatus ? 'Online' : 'Offline';
+  } catch (_) {
+    pingStatus = 'Offline';
+  }
+
+  // Update the "Site" to the newest ping status
+  await prisma.site.update({
+    where: {
+      id: ping.siteId
+    },
+    data: {
+      pingStatus: pingStatus
+    }
+  })
 
   return prisma.pingResult.create({
     data: {

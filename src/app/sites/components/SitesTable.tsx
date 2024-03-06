@@ -1,13 +1,13 @@
 'use client'
-import { Site } from '@prisma/client';
 import { ColumnDef } from '@tanstack/table-core';
 import Link from 'next/link';
 import { DataTable } from '~/components/ui/dataTable';
 import { Button } from '~/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { SiteWithPing } from '~/app/sites/controller/getSites';
 
 
-const columns: ColumnDef<Site>[] = [
+const columns: ColumnDef<SiteWithPing>[] = [
   {
     accessorKey: 'name',
     header: 'Name',
@@ -15,6 +15,10 @@ const columns: ColumnDef<Site>[] = [
   {
     accessorKey: 'pingStatus',
     header: 'Status',
+  },
+  {
+    accessorFn: (originalRow: SiteWithPing) => originalRow.pings.length,
+    header: 'Pings'
   },
   {
     id: 'actions',
@@ -35,9 +39,9 @@ const columns: ColumnDef<Site>[] = [
 ]
 
 
-export function SitesTable({sites}: { sites: Site[] }) {
+export function SitesTable({sites}: { sites: SiteWithPing[] }) {
   const r = useRouter();
-  const onRowClick = (site: Site) => {
+  const onRowClick = (site: SiteWithPing) => {
     r.push(`/sites/${site.id}`)
   }
 

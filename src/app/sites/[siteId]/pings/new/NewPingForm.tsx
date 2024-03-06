@@ -22,7 +22,7 @@ export const newPingFormSchema = z.object({
   timer: z.string().min(1, 'The timer cannot be empty')
 });
 
-const methods = [
+export const pingHttpMethods = [
   {label: 'GET', value: 'GET'},
   {label: 'OPTIONS', value: 'OPTIONS'},
 ];
@@ -96,7 +96,7 @@ export function NewPingForm() {
               form={form}
               label={'HTTP Method'}
               name={'method'}
-              options={methods}
+              options={pingHttpMethods}
               search={false}/>
 
             <FormField
