@@ -25,8 +25,14 @@ const config = {
         bggrad1: '#020024',
         bggrad2: '#023718',
         bggrad3: '#045336',
-        topnavBg: '#06a26a',
+        topnavBg: "#f6fff6",
         footerBg: '#051f0b',
+
+        onlineIcon: '#149108',
+        onlineText: '#149108',
+
+        offlineIcon: '#e72d2d',
+        offlineText: '#852f2f',
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

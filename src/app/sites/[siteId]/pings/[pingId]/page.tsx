@@ -1,10 +1,8 @@
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
-import PageHeader from '~/app/components/Layout/PageHeader';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { getPingById } from '~/app/sites/[siteId]/pings/controller/getPingById';
 import { PingCard } from '~/app/sites/[siteId]/pings/[pingId]/PingCard';
-import { getDomain } from '~/app/sites/util/getDomain';
 import Page from '~/app/components/Layout/Page';
 
 
@@ -21,13 +19,6 @@ export default async function PingPage({params}: { params: { siteId: string, pin
 
   return (
     <Page>
-      <PageHeader
-        segments={[
-          {label: 'Sites', link: '/sites'},
-          {label: site.name, link: `/sites/${site.id}`},
-          {label: 'Pings', link: `/sites/${params.siteId}/pings`},
-          {label: getDomain(ping.url)},
-        ]}/>
       <div className={'w-1/2'}>
         <PingCard ping={ping}/>
       </div>

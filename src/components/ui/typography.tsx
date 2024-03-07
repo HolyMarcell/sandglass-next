@@ -37,6 +37,41 @@ H2.displayName = "H2"
 
 // -------
 
+type H3Props = React.HTMLAttributes<HTMLHeadingElement>;
+
+const H3 = React.forwardRef<HTMLHeadingElement, H3Props>(
+  ({ className, ...props }, ref) => {
+    return (
+      <h3
+        className={cn(className, 'py-4 text-xl font-semibold')}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+H3.displayName = "H3"
+
+// -------
+
+type H4Props = React.HTMLAttributes<HTMLHeadingElement>;
+
+const H4 = React.forwardRef<HTMLHeadingElement, H4Props>(
+  ({ className, ...props }, ref) => {
+    return (
+      <h4
+        className={cn('py-2 text-lg font-semibold', className)}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+H4.displayName = "H4"
+
+
+// -------
+
 type PProps = React.HTMLAttributes<HTMLHeadingElement>;
 
 const P = React.forwardRef<HTMLHeadingElement, PProps>(
@@ -108,4 +143,4 @@ Li.displayName = "Li"
 
 
 
-export {H1, H2, P, Strong, Ol, Li}
+export {H1, H2, H3, H4, P, Strong, Ol, Li}

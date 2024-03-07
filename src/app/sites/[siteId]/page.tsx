@@ -1,10 +1,11 @@
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
-import { SiteCard } from '~/app/sites/[siteId]/SiteCard';
-import PageHeader from '~/app/components/Layout/PageHeader';
+import { SiteCard } from '~/app/sites/[siteId]/components/SiteCard';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { getBySiteId } from '~/app/sites/[siteId]/pings/controller/getBySiteId';
 import Page from '~/app/components/Layout/Page';
+import PingStatusGrid from '~/app/sites/[siteId]/components/PingStatusGrid';
+import PingStatusCard from '~/app/sites/[siteId]/components/PingStatusCard';
 
 
 export default async function SitePage({params}: { params: { siteId: string } }) {
@@ -20,11 +21,16 @@ export default async function SitePage({params}: { params: { siteId: string } })
 
   return (
     <Page>
-      <PageHeader
-        segments={[
-          {label: 'Sites', link: '/sites'},
-          {label: site.name, link: `/sites/${site.id}`}
-        ]}/>
+
+      <PingStatusGrid>
+        {pings.map((ping) => {
+          return (
+            <PingStatusCard ping={ping} key={ping.id} />
+          )
+        })}
+      </PingStatusGrid>
+
+
       <SiteCard site={site} pings={pings}/>
     </Page>
   )

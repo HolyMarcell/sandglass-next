@@ -1,4 +1,3 @@
-import PageHeader from '~/app/components/Layout/PageHeader';
 import { Site } from '@prisma/client';
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
@@ -15,13 +14,6 @@ export default async function NewPingPage({params}: {params: {siteId: Site['id']
 
   return (
     <Page>
-      <PageHeader
-        segments={[
-          {label: 'Sites', link: '/sites'},
-          {label: site.name, link: `/sites/${params.siteId}`},
-          {label: 'Pings', link: `/sites/${params.siteId}/pings`},
-          {label: 'New'}
-        ]}/>
       <NewPingForm />
     </Page>
   )

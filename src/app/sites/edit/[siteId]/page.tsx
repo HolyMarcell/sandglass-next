@@ -1,4 +1,3 @@
-import PageHeader from '~/app/components/Layout/PageHeader';
 import { EditSiteForm } from '~/app/sites/edit/[siteId]/EditSiteForm';
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
@@ -14,12 +13,6 @@ export default async function EditPage({params}: {params: {siteId: string}}) {
 
   return (
     <Page>
-      <PageHeader
-        segments={[
-          {label: 'Sites', link: '/sites'},
-          {label: site.name, link: `/sites/${site.id}`},
-          {label: 'Edit'}
-        ]}/>
       <EditSiteForm site={site} />
     </Page>
   )
