@@ -1,6 +1,5 @@
 import { isNil } from 'ramda';
 import { notFound } from 'next/navigation';
-import { SiteCard } from '~/app/sites/[siteId]/components/SiteCard';
 import { getSiteById } from '~/app/sites/controller/getSiteById';
 import { getBySiteId } from '~/app/sites/[siteId]/pings/controller/getBySiteId';
 import Page from '~/app/components/Layout/Page';

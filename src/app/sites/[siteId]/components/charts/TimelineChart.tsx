@@ -8,8 +8,11 @@ import { format } from 'date-fns';
 
 
 // Supress fucking webpack spamming shit around as Errors
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+/* eslint-disable  @typescript-eslint/no-unsafe-argument */
+/* eslint-disable  @typescript-eslint/no-unsafe-member-access */
 const error = console.error;
-console.error = (...args: any) => {
+console.error = (...args) => {
   if (/defaultProps/.test(args[0])) return;
   error(...args);
 };
@@ -62,7 +65,9 @@ export const TimelineChart = ({data}: { data: TimeChartData[] }) => {
             </Fragment>
           )
         })}
-        <Legend margin={{bottom: 200}} height={40} verticalAlign={'top'} formatter={(value) => pingNames[value]} />
+
+        <Legend margin={{bottom: 200}} height={40} verticalAlign={'top'} formatter={(value) =>
+          pingNames[value]} />
       </LineChart>
     </ResponsiveContainer>
   )
