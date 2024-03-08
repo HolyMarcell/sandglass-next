@@ -99,14 +99,15 @@ enum PingMethod {
 }
 
 model PingResult {
-  id        String           @id @default(cuid())
-  status    PingResultStatus
-  User      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  pingId    String
-  Ping      Ping             @relation(fields: [pingId], references: [id], onDelete: Cascade)
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  userId    String
+  id          String           @id @default(cuid())
+  status      PingResultStatus
+  User        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pingId      String
+  requestTime Int
+  Ping        Ping             @relation(fields: [pingId], references: [id], onDelete: Cascade)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  userId      String
 }
 
 enum PingResultStatus {

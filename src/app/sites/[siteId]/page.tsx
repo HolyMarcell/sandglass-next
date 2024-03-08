@@ -6,6 +6,7 @@ import { getBySiteId } from '~/app/sites/[siteId]/pings/controller/getBySiteId';
 import Page from '~/app/components/Layout/Page';
 import PingStatusGrid from '~/app/sites/[siteId]/components/PingStatusGrid';
 import PingStatusCard from '~/app/sites/[siteId]/components/PingStatusCard';
+import PingResultTimelineChart from '~/app/sites/[siteId]/components/PingResultTimelineChart';
 
 
 export default async function SitePage({params}: { params: { siteId: string } }) {
@@ -30,8 +31,10 @@ export default async function SitePage({params}: { params: { siteId: string } })
         })}
       </PingStatusGrid>
 
+      <PingResultTimelineChart site={site} />
 
-      <SiteCard site={site} pings={pings}/>
+
+      {/*<SiteCard site={site} pings={pings}/>*/}
     </Page>
   )
 }

@@ -30,15 +30,18 @@ const runPing = async (ping: Ping) => {
 
   // Do the ping
   let pingStatus: PingResultStatus;
+  const start = process.hrtime.bigint();
   try {
-
     const request = await fetch(ping.url, {
+      cache: 'no-store',
       method: ping.method
     });
     pingStatus = request.status === ping.expectStatus ? 'Online' : 'Offline';
   } catch (_) {
     pingStatus = 'Offline';
   }
+  const end = process.hrtime.bigint();
+  const requestTime = Number((end - start) / 1_000_000n);
 
   // Update the "Site" to the newest ping status
   await prisma.site.update({
@@ -55,6 +58,7 @@ const runPing = async (ping: Ping) => {
       status: pingStatus,
       userId: ping.userId,
       pingId: ping.id,
+      requestTime: requestTime,
     }
   });
 
