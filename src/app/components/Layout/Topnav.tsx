@@ -11,7 +11,7 @@ export async function Topnav() {
   const loggedIn = !isNil(session);
 
   const authClasses = 'bg-topnavBg w-4/5 max-w-screen-xl mx-auto flex rounded-b-lg h-[65px] text-green-900 sticky top-0 justify-between items-center'
-  const unauthClasses = 'bg-topnavBg w-full flex text-white items-center justify-between';
+  const unauthClasses = 'bg-topnavBg w-full flex text-green-900 items-center justify-between';
 
 
 
