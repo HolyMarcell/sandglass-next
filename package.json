@@ -13,7 +13,7 @@
     "start": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "prod": "next start"
+    "prod": "prisma migrate deploy && next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
